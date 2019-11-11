@@ -17,16 +17,14 @@ class ImageDropzone extends React.Component {
     const { children, droppedFiles, onImageDrop, onImageRemove } = this.props;
 
     return (
-      <div className={`${styles.imageUploader}`}>
+      <div className={`${styles.imaageDropzone}`}>
         <FileDropzone onImageDrop={onImageDrop}>{children}</FileDropzone>
         {droppedFiles &&
           droppedFiles.length > 0 &&
           droppedFiles.map((file, index) => {
-            console.log('droppedFile::', file);
-
             return (
               <ImagePreview
-                key={file.path}
+                key={index + file.path}
                 file={file}
                 index={index}
                 onImageRemove={onImageRemove}
@@ -59,7 +57,10 @@ function ImagePreview({ file, index, onImageRemove }) {
   return (
     <div className={styles.imagePreview}>
       <div className={styles.imageOptions}>
-        <button onClick={handleImageRemove}>❌</button>
+        <button
+          className={styles.closeBtn}
+          onClick={handleImageRemove}
+        ></button>
       </div>
       <img key={index} src={URL.createObjectURL(file)} alt="Dropped image" />
     </div>

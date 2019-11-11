@@ -1,4 +1,54 @@
+.imaageDropzone {
 
-.imagePreview {
+  .imagePreview {
+    position: relative;
+    width: 400px;
+    overflow: hidden;
 
+    .imageOptions {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      width: 100%;
+      height:40px;
+
+
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      .closeBtn {
+        position: relative;
+        width: 48px;
+        height: 48px;
+        opacity: 0.85;
+        background-color: #e93444;
+        border-radius: 0 0 0 10%;
+      }
+      .closeBtn:hover {
+        opacity: 1;
+      }
+      .closeBtn:before, .closeBtn:after {
+        position: absolute;
+        left: 0;
+        top: 0;
+        content: ' ';
+        height: 25px;
+        width: 3px;
+        background-color: #fff;
+      }
+      .closeBtn:before {
+        transform: rotate(45deg);
+      }
+      .closeBtn:after {
+        transform: rotate(-45deg);
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
 }
+

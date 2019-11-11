@@ -17,6 +17,7 @@ class HomePage extends React.Component {
 
   handleImageDrop = (files) => {
     this.setState((prevState) => {
+      console.log([...prevState.files, ...files]);
       return {
         files: [...prevState.files, ...files],
       };
@@ -32,8 +33,6 @@ class HomePage extends React.Component {
   };
 
   render() {
-    console.log('this.state.files: ', this.state.files);
-
     return (
       <div className={styles.homeRoute}>
         <h1 className={styles.title}>Home page</h1>
