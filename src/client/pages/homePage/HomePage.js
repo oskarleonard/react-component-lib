@@ -1,15 +1,19 @@
 import React from 'react';
-import themeStyles from '@client/shared/styles/theme/theme-styles.scss';
-import ReactLink from '@client/components/reactLink/ReactLink';
+import FileDropzone from '@client/components/fileDropzone/FileDropzone';
 import styles from './homePage.scss';
 
 class HomePage extends React.Component {
+  handleImageDrop = (file) => {
+    console.log(file);
+  };
+
   render() {
     return (
       <div className={styles.homeRoute}>
         <h1 className={styles.title}>Home page</h1>
-        <i className={themeStyles.iconHome} />
-        <ReactLink to={`/go-to-undefined`}>Not found page</ReactLink>
+        <FileDropzone onImageDrop={this.handleImageDrop}>
+          <div>HELLO</div>
+        </FileDropzone>
       </div>
     );
   }
