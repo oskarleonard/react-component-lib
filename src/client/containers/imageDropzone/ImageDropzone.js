@@ -31,7 +31,7 @@ class ImageDropzone extends React.Component {
     const { children, droppedFiles, onImageRemove } = this.props;
 
     return (
-      <div className={`${styles.imaageDropzone}`}>
+      <div className={`${styles.imageDropzone}`}>
         <FileDropzone onImageDrop={this.handleImageDrop}>
           {children}
         </FileDropzone>
@@ -76,12 +76,16 @@ function ImagePreview({ file, index, onImageRemove }) {
   return (
     <div className={styles.imagePreview}>
       <div className={styles.imageOptions}>
-        <button
-          className={styles.closeBtn}
-          onClick={handleImageRemove}
-        ></button>
+        <button className={styles.closeBtn} onClick={handleImageRemove}>
+          <div className={styles.crossIcon} />
+        </button>
       </div>
-      <img key={index} src={URL.createObjectURL(file)} alt="Dropped image" />
+      <img
+        className={styles.imagePreviewImg}
+        key={index}
+        src={URL.createObjectURL(file)}
+        alt="Dropped image"
+      />
     </div>
   );
 }
