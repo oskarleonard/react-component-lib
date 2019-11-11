@@ -5,26 +5,44 @@ import FileDropzone from '../../components/fileDropzone/FileDropzone';
 import styles from './imageDropzone.scss';
 
 class ImageDropzone extends React.Component {
-  constructor(props) {
-    super(props);
+  getIdFromFile = (file) => {
+    return file.path + file.lastModified + file.size;
+  };
 
-    this.state = {
-      files: null,
-    };
-  }
+  handleImageDrop = (files) => {
+    const alreadyDroppedFile = this.props.droppedFiles.find((droppedFile) => {
+      return files.find((file) => {
+        const first = this.getIdFromFile(file);
+        const second = this.getIdFromFile(droppedFile);
+        return first === second;
+      });
+    });
+
+    if (!alreadyDroppedFile) {
+      this.props.onImageDrop(files);
+    } else {
+      if (this.props.onDropDuplicate) {
+        this.props.onDropDuplicate(alreadyDroppedFile);
+      }
+    }
+  };
 
   render() {
-    const { children, droppedFiles, onImageDrop, onImageRemove } = this.props;
+    const { children, droppedFiles, onImageRemove } = this.props;
 
     return (
       <div className={`${styles.imaageDropzone}`}>
-        <FileDropzone onImageDrop={onImageDrop}>{children}</FileDropzone>
+        <FileDropzone onImageDrop={this.handleImageDrop}>
+          {children}
+        </FileDropzone>
         {droppedFiles &&
           droppedFiles.length > 0 &&
           droppedFiles.map((file, index) => {
+            const key = this.getIdFromFile(file);
+
             return (
               <ImagePreview
-                key={index + file.path}
+                key={key}
                 file={file}
                 index={index}
                 onImageRemove={onImageRemove}
@@ -44,6 +62,7 @@ ImageDropzone.propTypes = {
   ]),
   droppedFiles: PropTypes.array,
   onImageDrop: PropTypes.func,
+  onDropDuplicate: PropTypes.func,
   onImageRemove: PropTypes.func,
 };
 
