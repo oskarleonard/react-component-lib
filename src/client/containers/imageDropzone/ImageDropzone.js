@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'cropperjs/dist/cropper.css';
-import FileDropzone from '../../components/fileDropzone/FileDropzone';
+import ImgFilePreview from '@client/containers/imageDropzone/ImgFilePreview/ImgFilePreview';
+import FileDropzone from '@client/components/fileDropzone/FileDropzone';
 import styles from './imageDropzone.scss';
 
 class ImageDropzone extends React.Component {
@@ -41,7 +42,7 @@ class ImageDropzone extends React.Component {
             const key = this.getIdFromFile(file);
 
             return (
-              <ImagePreview
+              <ImgFilePreview
                 key={key}
                 file={file}
                 index={index}
@@ -67,25 +68,3 @@ ImageDropzone.propTypes = {
 };
 
 export default ImageDropzone;
-
-function ImagePreview({ file, index, onImageRemove }) {
-  const handleImageRemove = () => {
-    onImageRemove(index, file);
-  };
-
-  return (
-    <div className={styles.imagePreview}>
-      <div className={styles.imageOptions}>
-        <button className={styles.closeBtn} onClick={handleImageRemove}>
-          <div className={styles.crossIcon} />
-        </button>
-      </div>
-      <img
-        className={styles.imagePreviewImg}
-        key={index}
-        src={URL.createObjectURL(file)}
-        alt="Dropped image"
-      />
-    </div>
-  );
-}
