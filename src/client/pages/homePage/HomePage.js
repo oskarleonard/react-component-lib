@@ -1,32 +1,49 @@
 import React from 'react';
-import ImageCropper from '@client/components/imageCropper/ImageCropper';
+import ImageDropzone from '../../containers/imageDropzone/ImageDropzone';
+import {
+  imArrayMerge,
+  imDeleteFromArray,
+} from '../../shared/utils/immutableUtils/immutableUtils';
 import styles from './homePage.scss';
 
 class HomePage extends React.Component {
-  handleImageDrop = (file) => {
-    console.log(file);
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      files: [],
+    };
+  }
+
+  handleImageDrop = (files) => {
+    this.setState((prevState) => {
+      return {
+        files: [...prevState.files, ...files],
+      };
+    });
   };
 
-  getRefCropper = (cropper) => {
-    this.cropper = cropper;
-  };
-
-  onSelect = (selectEvent) => {
-    console.log('selectEvent', selectEvent);
-    console.log('this.cropper', this.cropper.getCroppedCanvas().toDataURL());
+  handleImageRemove = (index) => {
+    this.setState((prevState) => {
+      return {
+        files: imDeleteFromArray(prevState.files, index),
+      };
+    });
   };
 
   render() {
+    console.log('this.state.files: ', this.state.files);
+
     return (
       <div className={styles.homeRoute}>
         <h1 className={styles.title}>Home page</h1>
-        <ImageCropper
-          refFunc={this.getRefCropper}
-          imageUrl={
-            'https://assetsds.cdnedge.bluemix.net/sites/default/files/styles/very_big_1/public/feature/images/why_you_should_go_mountain_climbing_1.jpg?itok=wYnlNZir'
-          }
-          onSelectingArea={this.onSelect}
-        />
+        <ImageDropzone
+          droppedFiles={this.state.files}
+          onImageDrop={this.handleImageDrop}
+          onImageRemove={this.handleImageRemove}
+        >
+          <div>DROP IMAGE HERE</div>
+        </ImageDropzone>
       </div>
     );
   }
