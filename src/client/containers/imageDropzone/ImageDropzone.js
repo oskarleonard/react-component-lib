@@ -3,15 +3,32 @@ import PropTypes from 'prop-types';
 import 'cropperjs/dist/cropper.css';
 import ImgFilePreview from '@client/containers/imageDropzone/ImgFilePreview/ImgFilePreview';
 import FileDropzone from '@client/components/fileDropzone/FileDropzone';
+import { imDeleteFromArray } from '@client/shared/utils/immutableUtils/immutableUtils';
 import styles from './imageDropzone.scss';
 
 class ImageDropzone extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      files: [],
+    };
+  }
+
+  handleImageRemove = (index) => {
+    this.setState((prevState) => {
+      return {
+        files: imDeleteFromArray(prevState.files, index),
+      };
+    });
+  };
+
   getIdFromFile = (file) => {
     return file.path + file.lastModified + file.size;
   };
 
   handleImageDrop = (files) => {
-    const alreadyDroppedFile = this.props.droppedFiles.find((droppedFile) => {
+    const alreadyDroppedFile = this.state.files.find((droppedFile) => {
       return files.find((file) => {
         const first = this.getIdFromFile(file);
         const second = this.getIdFromFile(droppedFile);
@@ -20,7 +37,12 @@ class ImageDropzone extends React.Component {
     });
 
     if (!alreadyDroppedFile) {
-      this.props.onImageDrop(files);
+      this.setState((prevState) => {
+        console.log([...prevState.files, ...files]);
+        return {
+          files: [...prevState.files, ...files],
+        };
+      });
     } else {
       if (this.props.onDropDuplicate) {
         this.props.onDropDuplicate(alreadyDroppedFile);
@@ -33,15 +55,16 @@ class ImageDropzone extends React.Component {
   };
 
   render() {
-    const { children, droppedFiles, onImageRemove } = this.props;
+    const { children } = this.props;
+    const { files } = this.state;
 
     return (
       <div className={`${styles.imageDropzone}`}>
         <FileDropzone onImageDrop={this.handleImageDrop}>
           {children}
-          {droppedFiles &&
-            droppedFiles.length > 0 &&
-            droppedFiles.map((file, index) => {
+          {files &&
+            files.length > 0 &&
+            files.map((file, index) => {
               const key = this.getIdFromFile(file);
 
               return (
@@ -50,7 +73,7 @@ class ImageDropzone extends React.Component {
                   key={key}
                   file={file}
                   index={index}
-                  onImageRemove={onImageRemove}
+                  onImageRemove={this.handleImageRemove}
                 />
               );
             })}
@@ -66,7 +89,7 @@ ImageDropzone.propTypes = {
     PropTypes.object,
     PropTypes.func,
   ]),
-  droppedFiles: PropTypes.array,
+  files: PropTypes.array,
   onImageDrop: PropTypes.func,
   onDropDuplicate: PropTypes.func,
   onImageRemove: PropTypes.func,
