@@ -28,6 +28,10 @@ class ImageDropzone extends React.Component {
     }
   };
 
+  handlePreviewClick = (event) => {
+    event.stopPropagation();
+  };
+
   render() {
     const { children, droppedFiles, onImageRemove } = this.props;
 
@@ -35,21 +39,22 @@ class ImageDropzone extends React.Component {
       <div className={`${styles.imageDropzone}`}>
         <FileDropzone onImageDrop={this.handleImageDrop}>
           {children}
-        </FileDropzone>
-        {droppedFiles &&
-          droppedFiles.length > 0 &&
-          droppedFiles.map((file, index) => {
-            const key = this.getIdFromFile(file);
+          {droppedFiles &&
+            droppedFiles.length > 0 &&
+            droppedFiles.map((file, index) => {
+              const key = this.getIdFromFile(file);
 
-            return (
-              <ImgFilePreview
-                key={key}
-                file={file}
-                index={index}
-                onImageRemove={onImageRemove}
-              />
-            );
-          })}
+              return (
+                <ImgFilePreview
+                  onClick={this.handlePreviewClick}
+                  key={key}
+                  file={file}
+                  index={index}
+                  onImageRemove={onImageRemove}
+                />
+              );
+            })}
+        </FileDropzone>
       </div>
     );
   }
