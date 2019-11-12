@@ -15,7 +15,7 @@ class DropzoneWithPreview extends React.Component {
     };
   }
 
-  handleImageRemove = (index) => {
+  handleFileRemove = (index) => {
     this.setState((prevState) => {
       return {
         files: imDeleteFromArray(prevState.files, index),
@@ -27,7 +27,7 @@ class DropzoneWithPreview extends React.Component {
     return file.path + file.lastModified + file.size;
   };
 
-  handleImageDrop = (files) => {
+  handleFileDrop = (files) => {
     const alreadyDroppedFile = this.state.files.find((droppedFile) => {
       return files.find((file) => {
         const first = this.getIdFromFile(file);
@@ -60,7 +60,7 @@ class DropzoneWithPreview extends React.Component {
 
     return (
       <div className={`${styles.imageDropzone}`}>
-        <DropzoneWrapper onImageDrop={this.handleImageDrop}>
+        <DropzoneWrapper onFileDrop={this.handleFileDrop}>
           {children}
           {files &&
             files.length > 0 &&
@@ -73,7 +73,7 @@ class DropzoneWithPreview extends React.Component {
                   key={key}
                   file={file}
                   index={index}
-                  onImageRemove={this.handleImageRemove}
+                  onFileRemove={this.handleFileRemove}
                 />
               );
             })}
@@ -90,9 +90,9 @@ DropzoneWithPreview.propTypes = {
     PropTypes.func,
   ]),
   files: PropTypes.array,
-  onImageDrop: PropTypes.func,
+  onFileDrop: PropTypes.func,
   onDropDuplicate: PropTypes.func,
-  onImageRemove: PropTypes.func,
+  onFileRemove: PropTypes.func,
 };
 
 export default DropzoneWithPreview;

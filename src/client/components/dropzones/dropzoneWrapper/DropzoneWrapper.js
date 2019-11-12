@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Dropzone from 'react-dropzone';
 
-function DropzoneWrapper({ children, onImageDrop, multiple }) {
+function DropzoneWrapper({ children, onFileDrop, multiple }) {
   return (
-    <Dropzone multiple={multiple} onDrop={onImageDrop}>
+    <Dropzone multiple={multiple} onDrop={onFileDrop}>
       {({ getRootProps, getInputProps }) => {
         return (
           <section>
@@ -25,7 +25,7 @@ DropzoneWrapper.propTypes = {
     PropTypes.object,
     PropTypes.func,
   ]),
-  onImageDrop: PropTypes.func,
+  onFileDrop: PropTypes.func,
   multiple: PropTypes.bool,
 };
 
