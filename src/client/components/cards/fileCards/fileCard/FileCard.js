@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DocumentIcon from '@client/components/icons/documentIcon/DocumentIcon';
 import CrossIcon from '@client/components/icons/crossIcon/CrossIcon';
+import FileIcon from '@client/components/icons/fileIcon/FileIcon';
 import styles from './fileCard.scss';
 
 function FileCard({
@@ -8,12 +10,14 @@ function FileCard({
   onClick,
   file,
   index,
-  onImageRemove,
-  showDetails,
+  onFileRemove,
+  showDetails = true,
 }) {
-  const handleImageRemove = () => {
-    onImageRemove(index, file);
+  const handleFileRemove = () => {
+    onFileRemove(index, file);
   };
+
+  const isImage = file.type.includes('image/');
 
   return (
     <div
@@ -22,20 +26,26 @@ function FileCard({
     >
       <div className={styles.imageOptions}>
         <CrossIcon
-          onClick={handleImageRemove}
+          onClick={handleFileRemove}
           crossColor="white"
           style={{
             borderRadius: '50%',
-            backgroundColor: 'rgba(23,113,0,0.88)',
+            backgroundColor: 'rgba(46,46,46,0.85)',
           }}
         />
       </div>
-      <img
-        className={styles.imagePreviewImg}
-        key={index}
-        src={URL.createObjectURL(file)}
-        alt="Dropped image"
-      />
+      {isImage ? (
+        <img
+          className={styles.imagePreviewImg}
+          key={index}
+          src={URL.createObjectURL(file)}
+          alt="Dropped image"
+        />
+      ) : (
+        <div style={{ backgroundColor: 'red' }}>
+          <FileIcon type={file.type} />
+        </div>
+      )}
       {showDetails && (
         <div className={styles.detailsView}>
           <span>name: {file.name}</span>
