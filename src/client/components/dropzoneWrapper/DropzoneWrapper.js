@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Dropzone from 'react-dropzone';
 
-function FileDropzone({ children, onImageDrop, multiple }) {
+function DropzoneWrapper({ children, onImageDrop, multiple }) {
   return (
     <Dropzone multiple={multiple} onDrop={onImageDrop}>
       {({ getRootProps, getInputProps }) => {
@@ -19,7 +19,7 @@ function FileDropzone({ children, onImageDrop, multiple }) {
   );
 }
 
-FileDropzone.propTypes = {
+DropzoneWrapper.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.object,
@@ -29,4 +29,4 @@ FileDropzone.propTypes = {
   multiple: PropTypes.bool,
 };
 
-export default FileDropzone;
+export default DropzoneWrapper;

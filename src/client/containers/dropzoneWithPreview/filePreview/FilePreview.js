@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CrossIcon from '@client/components/icons/crossIcon/CrossIcon';
-import styles from './imgFilePreview.scss';
+import styles from './filePreview.scss';
 
-function ImgFilePreview({ onClick, file, index, onImageRemove }) {
+function FilePreview({ onClick, file, index, onImageRemove }) {
   console.log('file: ', file);
 
   const handleImageRemove = () => {
@@ -32,11 +32,11 @@ function ImgFilePreview({ onClick, file, index, onImageRemove }) {
   );
 }
 
-ImgFilePreview.propTypes = {
+FilePreview.propTypes = {
   onClick: PropTypes.func,
   file: PropTypes.object,
   index: PropTypes.number,
   onImageRemove: PropTypes.func,
 };
 
-export default ImgFilePreview;
+export default FilePreview;

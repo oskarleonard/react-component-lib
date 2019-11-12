@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'cropperjs/dist/cropper.css';
-import ImgFilePreview from '@client/containers/imageDropzone/ImgFilePreview/ImgFilePreview';
-import FileDropzone from '@client/components/fileDropzone/FileDropzone';
 import { imDeleteFromArray } from '@client/shared/utils/immutableUtils/immutableUtils';
-import styles from './imageDropzone.scss';
+import DropzoneWrapper from '../../components/dropzoneWrapper/DropzoneWrapper';
+import styles from './dropzoneWithPreview.scss';
+import FilePreview from './filePreview/FilePreview';
 
-class ImageDropzone extends React.Component {
+class DropzoneWithPreview extends React.Component {
   constructor(props) {
     super(props);
 
@@ -60,7 +60,7 @@ class ImageDropzone extends React.Component {
 
     return (
       <div className={`${styles.imageDropzone}`}>
-        <FileDropzone onImageDrop={this.handleImageDrop}>
+        <DropzoneWrapper onImageDrop={this.handleImageDrop}>
           {children}
           {files &&
             files.length > 0 &&
@@ -68,7 +68,7 @@ class ImageDropzone extends React.Component {
               const key = this.getIdFromFile(file);
 
               return (
-                <ImgFilePreview
+                <FilePreview
                   onClick={this.handlePreviewClick}
                   key={key}
                   file={file}
@@ -77,13 +77,13 @@ class ImageDropzone extends React.Component {
                 />
               );
             })}
-        </FileDropzone>
+        </DropzoneWrapper>
       </div>
     );
   }
 }
 
-ImageDropzone.propTypes = {
+DropzoneWithPreview.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.object,
@@ -95,4 +95,4 @@ ImageDropzone.propTypes = {
   onImageRemove: PropTypes.func,
 };
 
-export default ImageDropzone;
+export default DropzoneWithPreview;
