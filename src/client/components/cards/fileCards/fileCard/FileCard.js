@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DocumentIcon from '@client/components/icons/documentIcon/DocumentIcon';
 import CrossIcon from '@client/components/icons/crossIcon/CrossIcon';
 import FileIcon from '@client/components/icons/fileIcon/FileIcon';
 import styles from './fileCard.scss';
@@ -64,7 +63,7 @@ FileCard.propTypes = {
   onClick: PropTypes.func,
   file: PropTypes.object,
   index: PropTypes.number,
-  onImageRemove: PropTypes.func,
+  onFileRemove: PropTypes.func,
   showDetails: PropTypes.bool,
 };
 
