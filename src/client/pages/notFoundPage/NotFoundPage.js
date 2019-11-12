@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { AppFrameContext, useAppFrame } from '@client/context/AppFrameProvider';
-import ReactLink from '@client/components/reactLink/ReactLink';
+import ReactLink from '@client/components/links/reactLink/ReactLink';
 
 class Tester extends PureComponent {
   static contextType = AppFrameContext;

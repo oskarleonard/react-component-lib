@@ -1,0 +1,42 @@
+.crossIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+
+  &:before, &:after {
+    position: absolute;
+    left: auto;
+    top: auto;
+    content: '';
+    height: 44%;
+    width: 3px;
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+
+  &.white {
+    &:before, &:after {
+      background-color: #fff;
+    }
+  }
+
+  &.black {
+    &:before, &:after {
+      background-color: #000;
+    }
+  }
+}
+
+button.crossIcon {
+  &:hover {
+    border: 3px solid #ffffff;
+  }
+}
