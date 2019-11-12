@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './loader.scss';
+import styles from './syncLoader.scss';
 
-function Loader({ className }) {
+function SyncLoader({ className }) {
   return (
     <div className={styles.loader}>
       <div
@@ -18,8 +18,8 @@ function Loader({ className }) {
   );
 }
 
-Loader.propTypes = {
+SyncLoader.propTypes = {
   className: PropTypes.string,
 };
 
-export default Loader;
+export default SyncLoader;

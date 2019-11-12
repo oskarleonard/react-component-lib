@@ -1,5 +1,5 @@
 import React from 'react';
-import DropzoneWithPreview from '../../containers/dropzoneWithPreview/DropzoneWithPreview';
+import DropzoneWithPreview from '../../components/dropzones/dropzoneWithPreview/DropzoneWithPreview';
 import styles from './homePage.scss';
 
 class HomePage extends React.Component {

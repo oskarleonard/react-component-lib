@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import 'cropperjs/dist/cropper.css';
 import { imDeleteFromArray } from '@client/shared/utils/immutableUtils/immutableUtils';
-import DropzoneWrapper from '../../components/dropzoneWrapper/DropzoneWrapper';
+import DropzoneWrapper from '../dropzoneWrapper/DropzoneWrapper';
+import FileCard from '../../cards/fileCards/fileCard/FileCard';
 import styles from './dropzoneWithPreview.scss';
-import FilePreview from './filePreview/FilePreview';
 
 class DropzoneWithPreview extends React.Component {
   constructor(props) {
@@ -68,7 +68,7 @@ class DropzoneWithPreview extends React.Component {
               const key = this.getIdFromFile(file);
 
               return (
-                <FilePreview
+                <FileCard
                   onClick={this.handlePreviewClick}
                   key={key}
                   file={file}
