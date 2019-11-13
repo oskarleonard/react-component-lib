@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CrossIcon from '@client/components/icons/crossIcon/CrossIcon';
-import FileIcon from '@client/components/icons/fileIcon/FileIcon';
+import FileIconByType from '@client/components/icons/fileIconByType/FileIconByType';
 import styles from './fileCard.scss';
 
 function FileCard({
@@ -41,8 +41,8 @@ function FileCard({
           alt="Dropped image"
         />
       ) : (
-        <div style={{ backgroundColor: 'red' }}>
-          <FileIcon type={file.type} />
+        <div>
+          <FileIconByType type={file.type} />
         </div>
       )}
       {showDetails && (
