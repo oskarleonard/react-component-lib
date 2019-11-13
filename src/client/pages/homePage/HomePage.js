@@ -1,5 +1,5 @@
 import React from 'react';
-import MultipleFilesIcon from '@client/components/icons/multipleFilesIcon/AudioFileIcon';
+import MultipleFilesIcon from '@client/components/icons/filesEmptyIcon/FilesEmptyIcon';
 import DropzoneWithPreview from '../../components/dropzones/dropzoneWithPreview/DropzoneWithPreview';
 import styles from './homePage.scss';
 
