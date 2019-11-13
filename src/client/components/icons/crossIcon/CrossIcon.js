@@ -4,13 +4,12 @@ import styles from './crossIcon.scss';
 
 function CrossIcon({ onClick, crossColor, style }) {
   const DivOrButton = onClick
-    ? (props) => <button {...props} />
+    ? (props) => <button onClick={onClick} {...props} />
     : (props) => <div {...props} />;
 
   return (
     <DivOrButton
       style={style}
-      onClick={onClick}
       className={`${styles.crossIcon} ${styles[crossColor]}`}
     />
   );
