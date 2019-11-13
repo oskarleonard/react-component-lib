@@ -36,6 +36,8 @@
 }
 
 button.crossIcon {
+  outline: none;
+
   &:hover {
     border: 3px solid #ffffff;
   }
