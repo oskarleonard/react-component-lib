@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CrossIcon from '@client/components/icons/crossIcon/CrossIcon';
-import DocumentIcon from '@client/components/icons/documentIcon/DocumentIcon';
-import VideoFileIcon from '@client/components/icons/videoFileIcon/VideoFileIcon';
-import AudioFileIcon from '@client/components/icons/audioFileIcon/AudioFileIcon';
+import CrossIcon from '@rc-lib-client/components/icons/crossIcon/CrossIcon';
+import DocumentIcon from '@rc-lib-client/components/icons/documentIcon/DocumentIcon';
+import VideoFileIcon from '@rc-lib-client/components/icons/videoFileIcon/VideoFileIcon';
+import AudioFileIcon from '@rc-lib-client/components/icons/audioFileIcon/AudioFileIcon';
 import styles from './fileCard.scss';
 
 function FileCard({

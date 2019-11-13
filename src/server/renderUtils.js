@@ -1,7 +1,7 @@
 import path from 'path';
 import url from 'url';
 import { matchRoutes } from 'react-router-config';
-import { get500 } from '@server/views/htmlHelpers';
+import { get500 } from '@rc-lib-server/views/htmlHelpers';
 import routes from '../client/pages/routes';
 
 // The components that we're declaring in pages.js are imported async, so we can't garantee that

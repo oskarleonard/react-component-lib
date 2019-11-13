@@ -1,5 +1,5 @@
 import React from 'react';
-import AppFrameProvider from '@client/context/AppFrameProvider';
+import AppFrameProvider from '@rc-lib-client/context/AppFrameProvider';
 
 export class ContentServerService {
   initialState = {};

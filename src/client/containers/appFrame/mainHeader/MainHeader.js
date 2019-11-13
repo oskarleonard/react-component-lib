@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
-import themeStyles from '@client/shared/styles/theme/theme-styles.scss';
+import themeStyles from '@rc-lib-client/shared/styles/theme/theme-styles.scss';
 import styles from './mainHeader.scss';
 
 class MainHeader extends PureComponent {

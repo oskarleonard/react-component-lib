@@ -4,8 +4,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import { Router } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
 import { hydrate } from 'react-dom';
-import history from '@client/shared/utils/history';
-import AppFrameProvider from '@client/context/AppFrameProvider';
+import history from '@rc-lib-client/shared/utils/history';
+import AppFrameProvider from '@rc-lib-client/context/AppFrameProvider';
 import AppFrame from './containers/appFrame/AppFrame';
 import 'shared/styles/base.scss';
 

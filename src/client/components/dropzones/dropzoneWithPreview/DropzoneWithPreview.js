@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'cropperjs/dist/cropper.css';
-import { imDeleteFromArray } from '@client/shared/utils/immutableUtils/immutableUtils';
+import { imDeleteFromArray } from '@rc-lib-client/shared/utils/immutableUtils/immutableUtils';
 import DropzoneWrapper from '../dropzoneWrapper/DropzoneWrapper';
 import FileCard from '../../cards/fileCards/fileCard/FileCard';
 import styles from './dropzoneWithPreview.scss';

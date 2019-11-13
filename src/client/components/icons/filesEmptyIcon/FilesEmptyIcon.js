@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FragmentOrButtonWrapper } from '@client/shared/utils/dom/dom';
+import { FragmentOrButtonWrapper } from '@rc-lib-client/shared/utils/dom/dom';
 
 const FilesEmptyIcon = ({ className, style, onClick }) => {
   return (

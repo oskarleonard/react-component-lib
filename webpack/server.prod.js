@@ -99,8 +99,8 @@ module.exports = {
     extensions: ['.js'],
     modules: [path.resolve(__dirname, '..', 'src', 'client'), 'node_modules'],
     alias: {
-      '@client': path.resolve(__dirname, '..', 'src', 'client'),
-      '@server': path.resolve(__dirname, '..', 'src', 'server'),
+      '@rc-lib-client': path.resolve(__dirname, '..', 'src', 'client'),
+      '@rc-lib-server': path.resolve(__dirname, '..', 'src', 'server'),
     },
   },
   plugins: [

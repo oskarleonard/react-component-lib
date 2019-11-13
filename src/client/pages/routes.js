@@ -1,6 +1,6 @@
 import universal from 'react-universal-component';
-import SyncLoader from '@client/components/loaders/syncLoader/SyncLoader';
-import ErrorLoadingRouteChunk from '@client/containers/errorLoadingRouteChunk/ErrorLoadingRouteChunk';
+import SyncLoader from '@rc-lib-client/components/loaders/syncLoader/SyncLoader';
+import ErrorLoadingRouteChunk from '@rc-lib-client/containers/errorLoadingRouteChunk/ErrorLoadingRouteChunk';
 
 const options = {
   error: ErrorLoadingRouteChunk,

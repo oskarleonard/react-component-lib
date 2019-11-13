@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DivOrButton } from '@client/shared/utils/dom/dom';
+import { DivOrButton } from '@rc-lib-client/shared/utils/dom/dom';
 import styles from './crossIcon.scss';
 
 function CrossIcon({ onClick, crossColor, style }) {

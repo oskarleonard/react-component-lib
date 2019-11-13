@@ -5,7 +5,7 @@ import flushChunks from 'webpack-flush-chunks';
 import { StaticRouter } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
 import ReactDOMServer from 'react-dom/server';
-import ContentServerService from '@server/ContentServerService';
+import ContentServerService from '@rc-lib-server/ContentServerService';
 import AppFrame from '../client/containers/appFrame/AppFrame';
 import { getHtml } from './views/htmlHelpers';
 import { preloadDataErrorHandler, preloadRouteData } from './renderUtils';
