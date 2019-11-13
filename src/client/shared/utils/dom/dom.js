@@ -1,3 +1,5 @@
+import React from 'react';
+
 let scrollY = '';
 export function toggleFixedBody() {
   if (typeof window === 'object') {
@@ -15,3 +17,17 @@ export function toggleFixedBody() {
     }
   }
 }
+
+export const FragmentOrButtonWrapper = ({ onClick, children }) => {
+  // eslint-disable-line
+  return onClick ? (
+    <button onClick={onClick}>{children}</button>
+  ) : (
+    <React.Fragment>{children}</React.Fragment>
+  );
+};
+
+export const DivOrButton = ({ onClick, ...rest }) => {
+  // eslint-disable-line
+  return onClick ? <button onClick={onClick} {...rest} /> : <div {...rest} />;
+};

@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import IconElementChooser from '@client/components/icons/iconElementChooser/IconElementChooser';
+import { DivOrButton } from '@client/shared/utils/dom/dom';
 import styles from './crossIcon.scss';
 
 function CrossIcon({ onClick, crossColor, style }) {
   return (
-    <IconElementChooser
-      style={style}
+    <DivOrButton
       onClick={onClick}
-      iconStyle={`${styles.crossIcon} ${styles[crossColor]}`}
+      style={style}
+      className={`${styles.crossIcon} ${styles[crossColor]}`}
     />
   );
 }

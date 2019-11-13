@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CrossIcon from '@client/components/icons/crossIcon/CrossIcon';
-import FileIcon from '@client/components/icons/fileIcon/FileIcon';
+import DocumentIcon from '@client/components/icons/documentIcon/DocumentIcon';
+import VideoFileIcon from '@client/components/icons/videoFileIcon/VideoFileIcon';
+import AudioFileIcon from '@client/components/icons/audioFileIcon/AudioFileIcon';
 import styles from './fileCard.scss';
 
 function FileCard({
@@ -12,11 +14,22 @@ function FileCard({
   onFileRemove,
   showDetails = true,
 }) {
+  const getIcon = (type, style) => {
+    if (type.includes('audio/')) {
+      return <AudioFileIcon style={style} />;
+    } else if (type.includes('video/')) {
+      return <VideoFileIcon style={style} />;
+    } else {
+      return <DocumentIcon style={style} />;
+    }
+  };
+
   const handleFileRemove = () => {
     onFileRemove(index, file);
   };
 
   const isImage = file.type.includes('image/');
+  const icon = getIcon(file.type, { fill: 'black', height: '64px' });
 
   return (
     <div
@@ -41,9 +54,7 @@ function FileCard({
           alt="Dropped image"
         />
       ) : (
-        <div style={{ backgroundColor: 'red' }}>
-          <FileIcon type={file.type} />
-        </div>
+        <div className={styles.icon}>{icon}</div>
       )}
       {showDetails && (
         <div className={styles.detailsView}>
